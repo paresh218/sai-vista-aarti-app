@@ -16,7 +16,7 @@
     
     .hero-bg {
       background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                  url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9a9e5246-2775-4d94-86f1-2a93ccde5887.png') no-repeat center center;
+                  url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9a9e5246-2775-4394-85c3-89fa79691620.png') no-repeat center center;
       background-size: cover;
     }
     
@@ -80,22 +80,20 @@
             <form id="nominationForm" class="space-y-6">
                 <div>
           <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Complete Name *</label>
-          <input type="text" id="name" required class="w-full px-4 py-3 border focus:outline-none">
+          <input type="text" id="name" name="name" required class="w-full px-4 py-3 border focus:outline-none">
         </div>
         
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label for="flatNo" class="block text-sm font-medium text-gray-700 mb-1">Flat Number *</label>
-            <select id="flatNo" required class="w-full px-4 py-3 border focus:outline-none">
+            <select id="flatNo" name="flatNo" required class="w-full px-4 py-3 border focus:outline-none">
               <option value="" disabled selected>Select Flat Number</option>
               <script>
                 // Generate flat numbers from 101-104 up to 1301-1304
                 for (let floor = 1; floor <= 13; floor++) {
                   for (let flat = 1; flat <= 4; flat++) {
-                    const flatNo = `${floor}${flat < 10 ? '0' + flat : flat}`;
-                    // Correcting for flats like 101, 201 etc.
-                    const displayFlatNo = `${floor}0${flat}`;
-                    document.write(`<option value="${displayFlatNo}">${displayFlatNo}</option>`);
+                    const flatNo = `${floor}0${flat}`;
+                    document.write(`<option value="${flatNo}">${flatNo}</option>`);
                   }
                 }
               </script>
@@ -103,7 +101,7 @@
           </div>
           <div>
             <label for="wing" class="block text-sm font-medium text-gray-700 mb-1">Wing *</label>
-            <select id="wing" required class="w-full px-4 py-3 border focus:outline-none">
+            <select id="wing" name="wing" required class="w-full px-4 py-3 border focus:outline-none">
               <option value="" disabled selected>Select Wing</option>
               <option value="A">A</option>
               <option value="B">B</option>
@@ -117,14 +115,14 @@
         
                 <div>
           <label for="whatsapp" class="block text-sm font-medium text-gray-700 mb-1">WhatsApp Number *</label>
-          <input type="tel" id="whatsapp" required class="w-full px-4 py-3 border focus:outline-none" 
+          <input type="tel" id="whatsapp" name="whatsapp" required class="w-full px-4 py-3 border focus:outline-none" 
                  pattern="[0-9]{10}" title="Please enter a valid 10-digit WhatsApp number">
           <p class="text-xs text-gray-500 mt-1">Enter your 10-digit WhatsApp number without country code</p>
         </div>
         
                 <div>
           <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Select Date *</label>
-          <input type="date" id="date" required class="w-full px-4 py-3 border focus:outline-none"
+          <input type="date" id="date" name="date" required class="w-full px-4 py-3 border focus:outline-none"
                  min="2025-08-27" max="2025-09-06">
         </div>
         
@@ -138,7 +136,7 @@
               <i class="fas fa-moon mr-2 text-indigo-500"></i> Evening (6-8 PM)
             </button>
           </div>
-          <input type="hidden" id="slot" required>
+          <input type="hidden" id="slot" name="slot" required>
         </div>
         
                 <div id="chartContainer" class="chart-container p-4 mt-6">
@@ -150,7 +148,7 @@
         </div>
         
                 <div class="flex items-center">
-          <input type="checkbox" id="bringThali" class="w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500">
+          <input type="checkbox" id="bringThali" name="bringThali" class="w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500">
           <label for="bringThali" class="ml-2 text-sm text-gray-700">I will bring my own pooja thali and prasad</label>
         </div>
         
@@ -202,47 +200,56 @@
 
   <script>
     // **IMPORTANT:** Replace this with your deployed Google Apps Script Web App URL
-    const scriptURL = 'YOUR_DEPLOYED_APPS_SCRIPT_WEB_APP_URL_HERE'; // e.g., 'https://script.google.com/macros/s/AKfycbwCPJBtPjpk_tEcvV-B5e9HqaJG81koWD2Ke7gl-jd1igkBW83f0Rmaezm5ZcH2w8eO/exec'
-    const MAX_CAPACITY = 10; // This should match MAX_CAPACITY_PER_SLOT in your Apps Script
+    const scriptURL = 'AKfycbzk3n2315NosudNJZDPVc6jOEN7QKEy8UWnRGidXEk'; 
+    const MAX_CAPACITY_DISPLAY = 10; // This should match MAX_CAPACITY_PER_SLOT in your Apps Script for display consistency
 
     // Select time slot
     function selectSlot(slotType) {
         document.getElementById('slot').value = slotType;
-
-        // Update UI
+        
+        // Update UI for active slot button
         document.querySelectorAll('.slot-btn').forEach(btn => {
             btn.classList.remove('active');
         });
         document.getElementById(`${slotType}Slot`).classList.add('active');
-
-        // Update chart if date is selected
+        
+        // Update chart if a date is also selected
         const selectedDate = document.getElementById('date').value;
         if (selectedDate) {
             updateChart(selectedDate, slotType);
         }
     }
 
-    // Update registration chart
+    // Update registration chart with real-time data from Google Sheet
     async function updateChart(date, slot) {
         const chartContainer = document.getElementById('chartContainer');
-        chartContainer.innerHTML = `<div class="text-center w-full"><p class="text-sm text-gray-500">Loading chart...</p></div>`;
+        chartContainer.innerHTML = `<div class="text-center w-full"><p class="text-sm text-gray-500">Loading availability...</p></div>`;
 
         try {
-            const res = await fetch(scriptURL); // GET request to fetch all counts
-            if (!res.ok) {
-                throw new Error(`HTTP error! status: ${res.status}`);
-            }
-            const data = await res.json();
+            // Fetch data from Google Apps Script (doGet function)
+            const response = await fetch(scriptURL); 
             
-            // Check if there's an error from the script
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorText}`);
+            }
+
+            const data = await response.json();
+            
+            // Check for errors returned by the Apps Script itself
             if (data.error) {
-                chartContainer.innerHTML = `<div class="text-center w-full"><p class="text-sm text-red-500">Error from server: ${data.error}</p></div>`;
+                chartContainer.innerHTML = `<div class="text-center w-full"><p class="text-sm text-red-500">Server error: ${data.error}</p></div>`;
                 return;
             }
 
-            const slotData = data[date] || { morning: 0, evening: 0 };
-            const count = slotData[slot] || 0;
-            const maxCapacity = data.maxCapacity || MAX_CAPACITY; // Use maxCapacity from Apps Script if available, else local default
+            const counts = data.counts || {}; // Actual registration counts
+            const maxCapacity = data.maxCapacity || MAX_CAPACITY_DISPLAY; // Get max capacity from script, or use local default
+
+            const slotData = counts[date] || { morning: 0, evening: 0 };
+            const currentCount = slotData[slot] || 0;
+            
+            // Calculate height as percentage, capping at 100%
+            const barHeight = Math.min((currentCount / maxCapacity) * 100, 100);
 
             chartContainer.innerHTML = `
                 <div class="flex flex-col h-full">
@@ -251,10 +258,10 @@
                             <div class="relative w-3/4 h-48">
                                 <div class="absolute bottom-0 w-full bg-gray-200 rounded-t h-full"></div>
                                 <div class="absolute bottom-0 w-full bg-indigo-500 rounded-t" 
-                                    style="height: ${Math.min((count / maxCapacity) * 100, 100)}%;"></div>
+                                    style="height: ${barHeight}%;"></div>
                             </div>
                             <div class="mt-2 text-sm font-medium">
-                                Registered: ${count} / ${maxCapacity}
+                                Registered: ${currentCount} / ${maxCapacity}
                             </div>
                         </div>
                     </div>
@@ -262,86 +269,93 @@
             `;
         } catch (error) {
             console.error('Error fetching chart data:', error);
-            chartContainer.innerHTML = `<div class="text-center w-full"><p class="text-sm text-red-500">Failed to load chart data. Please try again.</p></div>`;
+            chartContainer.innerHTML = `<div class="text-center w-full"><p class="text-sm text-red-500">Failed to load availability. Please try again.</p></div>`;
         }
     }
 
-    // Date input change handler
+    // Event listener for date selection change
     document.getElementById('date').addEventListener('change', function() {
         const selectedDate = this.value;
         const selectedSlot = document.getElementById('slot').value;
         if (selectedDate && selectedSlot) {
             updateChart(selectedDate, selectedSlot);
+        } else if (selectedDate) {
+             // If only date is selected, clear chart or show message to select slot
+             document.getElementById('chartContainer').innerHTML = `
+                <div class="text-center w-full">
+                    <p class="text-sm text-gray-500">Please select a slot to see availability for this date.</p>
+                </div>
+             `;
         }
     });
 
-    // Form submission
+    // Form submission handler
     document.getElementById('nominationForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
+        e.preventDefault(); // Prevent default form submission
         
         const form = e.target;
-        const allInputs = form.querySelectorAll('input[required], select[required], #slot'); // Include hidden slot input
+        // Get all required inputs, including the hidden 'slot' field
+        const requiredInputs = form.querySelectorAll('input[required], select[required], #slot');
         let isValid = true;
         
-        allInputs.forEach(input => {
+        // Basic client-side validation for empty fields and WhatsApp format
+        requiredInputs.forEach(input => {
             if (!input.value) {
                 isValid = false;
-                input.classList.add('border-red-500');
+                input.classList.add('border-red-500'); // Add error styling
             } else {
-                input.classList.remove('border-red-500');
+                input.classList.remove('border-red-500'); // Remove error styling
             }
         });
         
-        // WhatsApp number validation
         const whatsappInput = document.getElementById('whatsapp');
         if (!/^\d{10}$/.test(whatsappInput.value)) {
             isValid = false;
             whatsappInput.classList.add('border-red-500');
             alert('Please enter a valid 10-digit WhatsApp number.');
-            return;
+            return; // Stop if WhatsApp is invalid
         } else {
             whatsappInput.classList.remove('border-red-500');
         }
 
         if (!isValid) {
             alert('Please fill all required fields correctly.');
-            return;
+            return; // Stop if any required field is empty
         }
 
         const submitButton = form.querySelector('button[type="submit"]');
-        submitButton.disabled = true;
-        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Submitting...';
+        submitButton.disabled = true; // Disable button to prevent multiple submissions
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Submitting...'; // Show loading state
 
-        const formData = new FormData(form);
-        // Manually add the hidden slot field
-        formData.append('slot', document.getElementById('slot').value);
-        formData.append('bringThali', document.getElementById('bringThali').checked);
+        const formData = new FormData(form); // Collect form data
+        // Explicitly add checkbox value if needed, FormData usually handles this
+        formData.set('bringThali', document.getElementById('bringThali').checked);
 
         try {
             const response = await fetch(scriptURL, {
                 method: 'POST',
-                body: formData // FormData automatically sets 'Content-Type': 'multipart/form-data'
+                body: formData // FormData correctly sets Content-Type
             });
 
             if (!response.ok) {
                 const errorText = await response.text();
-                throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+                throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorText}`);
             }
 
             const result = await response.json(); // Parse the JSON response from Apps Script
 
             if (result.success) {
-                form.reset();
+                form.reset(); // Clear the form
+                // Deactivate slot buttons
                 document.querySelectorAll('.slot-btn').forEach(btn => {
                     btn.classList.remove('active');
                 });
-                document.getElementById('successMessage').classList.remove('hidden');
-                form.classList.add('hidden');
+                document.getElementById('successMessage').classList.remove('hidden'); // Show success message
+                form.classList.add('hidden'); // Hide the form
+
+                // Construct WhatsApp admin message with submitted details
+                const whatsappLink = `https://wa.me/8149525915?text=Hi%20Admin,%20I%20just%20registered%20for%20Ganesh%20Aarati%20on%20${formData.get('date')}%20(${formData.get('slot')}%20slot).%20My%20details:%20Name:%20${encodeURIComponent(formData.get('name'))},%20Flat:%20${formData.get('flatNo')}%20${formData.get('wing')}.%20WhatsApp:%20${formData.get('whatsapp')}`;
                 
-                // Create WhatsApp group invite link (using submitted data for clarity)
-                const whatsappLink = `https://wa.me/8149525915?text=Hi%20Admin,%20I%20just%20registered%20for%20Ganesh%20Aarati%20on%20${formData.get('date')}%20(${formData.get('slot')}%20slot).%20My%20details:%20${formData.get('name')},%20Flat%20No:%20${formData.get('flatNo')}%20Wing:%20${formData.get('wing')}`;
-                
-                // Update success message with WhatsApp link
                 document.querySelector('#successMessage .text-green-700').innerHTML = `
                     <p>Your nomination for Ganesh Aarati has been successfully registered.</p>
                     <p class="mt-1">You'll be added to our WhatsApp group shortly.</p>
@@ -349,10 +363,9 @@
                     <p class="mt-4"><a href="${whatsappLink}" target="_blank" class="text-green-600 underline">Click here to message admin on WhatsApp</a></p>
                 `;
                 
-                // Scroll to success message
                 document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
 
-                // Refresh chart data after successful submission
+                // Re-fetch chart data to show updated counts for the selected date/slot
                 const selectedDate = document.getElementById('date').value;
                 const selectedSlot = document.getElementById('slot').value;
                 if (selectedDate && selectedSlot) {
@@ -360,29 +373,30 @@
                 }
 
             } else {
-                alert(`Error: ${result.message}`);
+                alert(`Registration failed: ${result.message}`);
             }
         } catch (error) {
             alert('Error submitting form. Please try again or contact admin at 8149525915. Details: ' + error.message);
-            console.error('Error:', error);
+            console.error('Submission Error:', error);
         } finally {
-            submitButton.disabled = false;
-            submitButton.innerHTML = '<i class="fas fa-paper-plane mr-2"></i> Submit Registration';
+            submitButton.disabled = false; // Re-enable button
+            submitButton.innerHTML = '<i class="fas fa-paper-plane mr-2"></i> Submit Registration'; // Reset button text
         }
     });
 
-    // Initialize the form on page load
+    // Initialize the form elements on page load
     document.addEventListener('DOMContentLoaded', function() {
         const dateInput = document.getElementById('date');
+        // Set the minimum and maximum dates for the date input
         dateInput.min = '2025-08-27';
         dateInput.max = '2025-09-06';
         
-        // WhatsApp input validation (allow only digits and limit to 10)
+        // Ensure WhatsApp input only accepts digits and limits to 10 characters
         document.getElementById('whatsapp').addEventListener('input', function() {
             this.value = this.value.replace(/\D/g, '').substring(0, 10);
         });
-
-        // Initialize chart if a date and slot are pre-selected (unlikely for a fresh form)
+        
+        // Initial chart display if date/slot are pre-filled (e.g., from browser history)
         const initialDate = dateInput.value;
         const initialSlot = document.getElementById('slot').value;
         if (initialDate && initialSlot) {
