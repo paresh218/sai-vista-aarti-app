@@ -385,7 +385,7 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycbwCPJBtPjpk_tEcvV-B5e
     chartContainer.innerHTML = `<p class="text-sm text-gray-500">Loading chart...</p>`;
 
     try {
-      const res = await fetch(scriptURL);
+      const res = await fetch(scriptURL + '?action=getData');
       const data = await res.json();
 
       const slotData = data[date] || { morning: 0, evening: 0 };
@@ -414,21 +414,21 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycbwCPJBtPjpk_tEcvV-B5e
     }
   }
 
-  // Replace original event listeners
-  document.getElementById('date').addEventListener('change', function() {
-    const selectedDate = this.value;
-    const selectedSlot = document.getElementById('slot').value;
-    if (selectedDate && selectedSlot) {
-      updateChart(selectedDate, selectedSlot);
-    }
-  });
+  document.addEventListener('DOMContentLoaded', function () {
+    const dateEl = document.getElementById('date');
+    const slotEl = document.getElementById('slot');
 
-  document.getElementById('slot').addEventListener('change', function() {
-    const selectedDate = document.getElementById('date').value;
-    const selectedSlot = this.value;
-    if (selectedDate && selectedSlot) {
-      updateChart(selectedDate, selectedSlot);
-    }
+    dateEl.addEventListener('change', () => {
+      const date = dateEl.value;
+      const slot = slotEl.value;
+      if (date && slot) updateChart(date, slot);
+    });
+
+    slotEl.addEventListener('change', () => {
+      const date = dateEl.value;
+      const slot = slotEl.value;
+      if (date && slot) updateChart(date, slot);
+    });
   });
     // Initialize the form
     document.addEventListener('DOMContentLoaded', function() {
