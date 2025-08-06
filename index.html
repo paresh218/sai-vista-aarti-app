@@ -11,87 +11,222 @@
     body {
       font-family: 'Poppins', sans-serif;
       background: #f5f5f5;
+      color: #374151; /* Better default text color */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
     .hero-bg {
-      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
         url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9a9e5246-2775-4394-85c3-89fa79691620.png')
           no-repeat center center;
       background-size: cover;
+      box-shadow: inset 0 0 80px rgba(0,0,0,0.5);
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+    }
+    h1, h2 {
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: 0.015em;
+    }
+    h1 {
+      color: #fbbf24; /* Warm golden/yellow */
+      text-shadow: 0 2px 8px rgba(251, 191, 36, 0.5);
+    }
+    h2 {
+      color: #3b82f6; /* Bright Blue */
+    }
+    p {
+      line-height: 1.6;
     }
     .form-container {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(100, 116, 139, 0.15);
+      padding: 2.5rem 2rem 3rem 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      transition: box-shadow 0.3s ease;
     }
-    input,
+    .form-container:hover {
+      box-shadow: 0 12px 36px rgba(100, 116, 139, 0.3);
+    }
+    input[type="text"],
+    input[type="tel"],
+    input[type="date"],
     select {
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      transition: all 0.3s;
+      border-radius: 10px;
+      border: 1.5px solid #d1d5db; /* lighter border */
+      padding: 0.75rem 1rem;
+      font-weight: 500;
+      font-size: 1rem;
+      color: #374151;
+      transition: all 0.3s ease;
     }
-    input:focus,
+    input[type="text"]:focus,
+    input[type="tel"]:focus,
+    input[type="date"]:focus,
     select:focus {
-      border-color: #4f46e5;
-      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
       outline: none;
+      border-color: #3b82f6; /* bright blue */
+      box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+      background-color: #f0f9ff;
     }
     .btn-primary {
-      background-color: #4f46e5;
-      transition: all 0.3s;
+      background-color: #3b82f6;
+      box-shadow: 0 4px 10px rgba(59, 130, 246, 0.4);
+      font-weight: 600;
+      font-size: 1.125rem;
+      padding: 0.85rem 1.5rem;
+      border-radius: 12px;
+      color: white;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .btn-primary:hover {
-      background-color: #4338ca;
-      transform: translateY(-2px);
+      background-color: #2563eb;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 14px rgba(37, 99, 235, 0.5);
+    }
+    .btn-primary i {
+      margin-right: 0.5rem;
+      font-size: 1.25rem;
     }
     .slot-btn {
-      border: 2px solid #e2e8f0;
-      transition: all 0.3s;
+      border-radius: 12px;
+      border: 2px solid #d1d5db;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.85rem 1.1rem;
+      background: white;
+      box-shadow: inset 0 0 4px #f9fafb;
+      transition: all 0.3s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      color: #374151;
+    }
+    .slot-btn i {
+      margin-right: 0.5rem;
+    }
+    .slot-btn:hover {
+      border-color: #3b82f6;
+      background: #e0efff;
+      color: #2563eb;
+      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
     }
     .slot-btn.active {
-      border-color: #4f46e5;
-      background: #eef2ff;
+      border-color: #2563eb;
+      background-color: #dbeafe;
+      color: #1e40af;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
     }
     .chart-container {
-      height: 300px;
-      background: #f8fafc;
-      border-radius: 10px;
-      position: relative;
+      height: 320px;
+      background: #f1f5f9;
+      border-radius: 12px;
+      box-shadow: inset 0 0 8px #e2e8f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #6b7280;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    input[type="checkbox"] {
+      accent-color: #3b82f6; /* blue accent for checkboxes */
+      width: 1.15rem;
+      height: 1.15rem;
+      cursor: pointer;
+      border-radius: 4px;
+      border: 1.5px solid #d1d5db;
+      transition: border-color 0.3s ease;
+    }
+    input[type="checkbox"]:focus {
+      outline: none;
+      box-shadow: 0 0 6px rgba(59, 130, 246, 0.7);
+      border-color: #3b82f6;
+    }
+    .text-green-700 {
+      font-weight: 500;
+      font-size: 1rem;
+    }
+    #successMessage {
+      box-shadow: 0 8px 24px rgba(34, 197, 94, 0.2);
+    }
+    footer {
+      letter-spacing: 0.02em;
+      font-weight: 500;
+    }
+    footer p {
+      color: #9ca3af; /* subtle gray */
+    }
+    footer a {
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: white;
+    }
+    /* Responsive tweaks */
+    @media (max-width: 640px) {
+      .form-container {
+        padding: 1.5rem 1.25rem 2rem 1.25rem;
+      }
     }
   </style>
 </head>
 <body class="min-h-screen">
-  <header class="hero-bg text-white py-16 md:py-24">
+  <header class="hero-bg text-white py-16 md:py-24 rounded-b-xl">
     <div class="container mx-auto px-4 text-center">
       <img
         src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/575555f8-e882-4618-a576-534c5822eef5.png"
         alt="Ganesh"
-        class="mx-auto rounded-full border-4 border-yellow-400 mb-6"
+        class="mx-auto rounded-full border-4 border-yellow-400 mb-6 shadow-lg"
         style="width: 120px"
       />
       <h1 class="text-4xl md:text-5xl font-bold mb-4">Sai Vista Ganesh Festival</h1>
-      <p class="text-xl md:text-2xl mb-8">Celebration 2025 - Aarati Nomination</p>
+      <p class="text-xl md:text-2xl mb-8 font-semibold">Celebration 2025 - Aarati Nomination</p>
     </div>
   </header>
 
   <main class="container mx-auto px-4 py-12 max-w-4xl">
-    <div class="form-container p-6 md:p-10">
+    <div class="form-container">
       <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">Nomination Form</h2>
       <form id="nominationForm" class="space-y-6">
         <div>
-          <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Complete Name *</label>
-          <input type="text" id="name" required class="w-full px-4 py-3 border focus:outline-none" />
+          <label for="name" class="block text-sm font-semibold text-gray-700 mb-1">Complete Name *</label>
+          <input
+            type="text"
+            id="name"
+            required
+            class="w-full px-4 py-3 border focus:outline-none placeholder-gray-400"
+            placeholder="Enter your full name"
+          />
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label for="flatNo" class="block text-sm font-medium text-gray-700 mb-1">Flat Number *</label>
-            <select id="flatNo" required class="w-full px-4 py-3 border focus:outline-none">
+            <label for="flatNo" class="block text-sm font-semibold text-gray-700 mb-1">Flat Number *</label>
+            <select
+              id="flatNo"
+              required
+              class="w-full px-4 py-3 border focus:outline-none bg-white"
+            >
               <option value="" disabled selected>Select Flat Number</option>
             </select>
           </div>
           <div>
-            <label for="wing" class="block text-sm font-medium text-gray-700 mb-1">Wing *</label>
-            <select id="wing" required class="w-full px-4 py-3 border focus:outline-none">
+            <label for="wing" class="block text-sm font-semibold text-gray-700 mb-1">Wing *</label>
+            <select
+              id="wing"
+              required
+              class="w-full px-4 py-3 border focus:outline-none bg-white"
+            >
               <option value="" disabled selected>Select Wing</option>
               <option value="A">A</option>
               <option value="B">B</option>
@@ -104,20 +239,21 @@
         </div>
 
         <div>
-          <label for="whatsapp" class="block text-sm font-medium text-gray-700 mb-1">WhatsApp Number *</label>
+          <label for="whatsapp" class="block text-sm font-semibold text-gray-700 mb-1">WhatsApp Number *</label>
           <input
             type="tel"
             id="whatsapp"
             required
-            class="w-full px-4 py-3 border focus:outline-none"
+            class="w-full px-4 py-3 border focus:outline-none placeholder-gray-400"
             pattern="[0-9]{10}"
             title="Please enter a valid 10-digit WhatsApp number"
+            placeholder="Enter your 10-digit WhatsApp number"
           />
           <p class="text-xs text-gray-500 mt-1">Enter 10-digit WhatsApp number (without country code)</p>
         </div>
 
         <div>
-          <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Select Date *</label>
+          <label for="date" class="block text-sm font-semibold text-gray-700 mb-1">Select Date *</label>
           <input
             type="date"
             id="date"
@@ -129,13 +265,14 @@
         </div>
 
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Select Slot *</label>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Select Slot *</label>
           <div class="grid grid-cols-2 gap-3">
             <button
               type="button"
               id="morningSlot"
               class="slot-btn py-3 px-4 rounded-lg"
               onclick="selectSlot('morning')"
+              aria-pressed="false"
             >
               <i class="fas fa-sun mr-2 text-yellow-500"></i> Morning (8-10 AM)
             </button>
@@ -144,6 +281,7 @@
               id="eveningSlot"
               class="slot-btn py-3 px-4 rounded-lg"
               onclick="selectSlot('evening')"
+              aria-pressed="false"
             >
               <i class="fas fa-moon mr-2 text-indigo-500"></i> Evening (6-8 PM)
             </button>
@@ -151,49 +289,47 @@
           <input type="hidden" id="slot" required />
         </div>
 
-        <div id="chartContainer" class="chart-container p-4 mt-6">
-          <div class="flex justify-between items-end h-full pb-4">
-            <div class="text-center w-full">
-              <p class="text-sm text-gray-500">Select a date and slot to see availability</p>
-            </div>
-          </div>
+        <div id="chartContainer" class="chart-container mt-6 px-6 py-4 rounded-lg text-center text-gray-600">
+          <p class="text-base">Select a date and slot to see availability</p>
         </div>
 
-        <div class="flex items-center">
+        <div class="flex items-center mt-6">
           <input
             type="checkbox"
             id="bringThali"
-            class="w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500"
+            class="w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300"
           />
-          <label for="bringThali" class="ml-2 text-sm text-gray-700"
+          <label for="bringThali" class="ml-2 text-sm font-medium text-gray-700"
             >I will bring my own pooja thali and prasad</label
           >
         </div>
 
         <button
           type="submit"
-          class="btn-primary text-white py-3 px-6 rounded-lg w-full font-medium"
+          class="btn-primary w-full mt-8"
+          aria-label="Submit Registration"
         >
-          <i class="fas fa-paper-plane mr-2"></i> Submit Registration
+          <i class="fas fa-paper-plane"></i> Submit Registration
         </button>
       </form>
 
       <div
         id="successMessage"
-        class="hidden mt-8 p-6 bg-green-50 border border-green-200 rounded-lg"
+        class="hidden mt-8 p-6 bg-green-50 border border-green-200 rounded-lg shadow-lg"
+        role="alert"
+        aria-live="polite"
       >
         <div class="flex items-center">
           <div class="flex-shrink-0">
             <i class="fas fa-check-circle text-green-500 text-3xl"></i>
           </div>
-          <div class="ml-3">
-            <h3 class="text-lg font-medium text-green-800">Thank you for your registration!</h3>
-            <div class="mt-2 text-sm text-green-700" id="successDetails">
+          <div class="ml-4">
+            <h3 class="text-lg font-semibold text-green-800">Thank you for your registration!</h3>
+            <div class="mt-3 text-base text-green-700" id="successDetails">
               <p>Your nomination for Ganesh Aarati has been successfully registered.</p>
               <p class="mt-1">You'll be added to our WhatsApp group shortly.</p>
               <p class="mt-1">
-                For any changes, please message admin on WhatsApp at
-                <strong>8149525915</strong>.
+                For any changes, please message admin on WhatsApp at <strong>8149525915</strong>.
               </p>
             </div>
           </div>
@@ -201,28 +337,29 @@
       </div>
 
       <div
-        class="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg"
+        class="mt-12 p-4 bg-blue-50 border border-blue-200 rounded-lg text-blue-700 text-sm leading-relaxed"
       >
-        <p class="text-sm text-blue-700">
+        <p>
           <i class="fas fa-info-circle mr-2 text-blue-500"></i>
-          Note: Your information will be securely stored in our Google Sheets records for
-          organizational purposes. For any changes to your registration, please contact the
-          admin at 8149525915. Data is encrypted during transmission. This site is hosted on
-          GitHub Pages.
+          Note: Your information will be securely stored in our Google Sheets records for organizational purposes.
+          For any changes to your registration, please contact the admin at 8149525915.
+          Data is encrypted during transmission. This site is hosted on GitHub Pages.
         </p>
       </div>
     </div>
   </main>
 
-  <footer class="bg-gray-800 text-white py-8">
-    <div class="container mx-auto px-4 text-center">
-      <p>Sai Vista Ganesh Festival Celebration 2025</p>
-      <p class="mt-2 text-sm text-gray-400">August 27 - September 6, 2025</p>
-      <div class="mt-4 flex justify-center space-x-4">
-        <a href="#" class="text-gray-300 hover:text-white"
-          ><i class="fab fa-whatsapp text-xl"></i
-        ></a>
-        <a href="#" class="text-gray-300 hover:text-white"><i class="fas fa-phone text-xl"></i></a>
+  <footer class="bg-gray-800 text-white py-8 rounded-t-xl mt-12 shadow-inner">
+    <div class="container mx-auto px-4 text-center space-y-2">
+      <p class="text-sm font-medium tracking-wide">Sai Vista Ganesh Festival Celebration 2025</p>
+      <p class="text-xs text-gray-400 tracking-wide">August 27 - September 6, 2025</p>
+      <div class="mt-3 flex justify-center space-x-6">
+        <a href="#" class="transition-colors hover:text-yellow-400" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp text-2xl"></i>
+        </a>
+        <a href="#" class="transition-colors hover:text-yellow-400" aria-label="Phone">
+          <i class="fas fa-phone text-2xl"></i>
+        </a>
       </div>
     </div>
   </footer>
@@ -231,7 +368,6 @@
     // *** IMPORTANT: Replace below with your actual deployed Google Apps Script Web App URL ***
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbykt4hREp5XjANmR2IvnEHLnExSHcrXLcvkHGalcthBy6Awhy9zSk_3g6NxLhP6Khz2/exec";
 
-    // Populate flat numbers 101-104 to 1301-1304
     document.addEventListener("DOMContentLoaded", () => {
       const flatSelect = document.getElementById("flatNo");
       for (let floor = 1; floor <= 13; floor++) {
@@ -244,13 +380,11 @@
         }
       }
 
-      // WhatsApp input sanitization
       document.getElementById("whatsapp").addEventListener("input", function () {
         this.value = this.value.replace(/\D/g, "").slice(0, 10);
       });
     });
 
-    // Select Slot logic
     window.selectSlot = function (slotType) {
       document.getElementById("slot").value = slotType;
 
@@ -263,7 +397,6 @@
       }
     };
 
-    // Fetch slot data (live counts)
     async function fetchSlotData() {
       const resp = await fetch(GOOGLE_SCRIPT_URL);
       return await resp.json();
@@ -275,7 +408,6 @@
       try {
         registrations = await fetchSlotData();
       } catch {
-        // fallback in case of failure
         registrations = {};
       }
       const data = registrations[date] || { morning: 0, evening: 0 };
@@ -286,18 +418,17 @@
         <div class="flex flex-col h-full">
           <div class="flex justify-between items-end flex-grow">
             <div class="flex flex-col items-center w-full">
-              <div class="relative w-3/4 h-48">
+              <div class="relative w-3/4 h-48 rounded-lg overflow-hidden shadow-inner">
                 <div class="absolute bottom-0 w-full bg-gray-200 rounded-t h-full"></div>
-                <div class="absolute bottom-0 w-full bg-indigo-500 rounded-t" style="height: ${(count / maxCapacity) * 100}%"></div>
+                <div class="absolute bottom-0 w-full bg-indigo-500 rounded-t transition-all duration-500 ease-in-out" style="height: ${(count / maxCapacity) * 100}%"></div>
               </div>
-              <div class="mt-2 text-sm font-medium">Registered: ${count} / ${maxCapacity}</div>
+              <div class="mt-2 text-sm font-semibold text-gray-700 select-none">Registered: ${count} / ${maxCapacity}</div>
             </div>
           </div>
         </div>
       `;
     }
 
-    // Update chart on date change if slot selected
     document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("date").addEventListener("change", () => {
         const date = document.getElementById("date").value;
@@ -306,14 +437,12 @@
       });
     });
 
-    // Handle form submission with URL-encoded POST data (to avoid CORS issues)
     document.getElementById("nominationForm").addEventListener("submit", async (e) => {
       e.preventDefault();
 
       const form = e.target;
       let isValid = true;
 
-      // Validate required fields
       form.querySelectorAll("input[required], select[required]").forEach((input) => {
         if (!input.value.trim()) {
           isValid = false;
@@ -323,7 +452,6 @@
         }
       });
 
-      // Validate WhatsApp number
       const whatsappInput = document.getElementById("whatsapp");
       if (!/^\d{10}$/.test(whatsappInput.value)) {
         isValid = false;
@@ -335,7 +463,6 @@
         return;
       }
 
-      // Prepare URL-encoded data for Apps Script
       const formData = {
         name: document.getElementById("name").value.trim(),
         flatNo: document.getElementById("flatNo").value,
