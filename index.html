@@ -11,7 +11,7 @@
     body {
       font-family: 'Poppins', sans-serif;
       background: #f5f5f5;
-      color: #374151; /* Better default text color */
+      color: #374151;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
@@ -30,11 +30,11 @@
       letter-spacing: 0.015em;
     }
     h1 {
-      color: #fbbf24; /* Warm golden/yellow */
+      color: #fbbf24;
       text-shadow: 0 2px 8px rgba(251, 191, 36, 0.5);
     }
     h2 {
-      color: #3b82f6; /* Bright Blue */
+      color: #3b82f6;
     }
     p {
       line-height: 1.6;
@@ -57,7 +57,7 @@
     input[type="date"],
     select {
       border-radius: 10px;
-      border: 1.5px solid #d1d5db; /* lighter border */
+      border: 1.5px solid #d1d5db;
       padding: 0.75rem 1rem;
       font-weight: 500;
       font-size: 1rem;
@@ -69,7 +69,7 @@
     input[type="date"]:focus,
     select:focus {
       outline: none;
-      border-color: #3b82f6; /* bright blue */
+      border-color: #3b82f6;
       box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
       background-color: #f0f9ff;
     }
@@ -85,8 +85,17 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
+      user-select: none;
+      border: none;
     }
-    .btn-primary:hover {
+    .btn-primary:disabled {
+      background-color: #93c5fd;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+    .btn-primary:hover:not(:disabled) {
       background-color: #2563eb;
       transform: translateY(-3px);
       box-shadow: 0 6px 14px rgba(37, 99, 235, 0.5);
@@ -139,7 +148,7 @@
       font-size: 0.95rem;
     }
     input[type="checkbox"] {
-      accent-color: #3b82f6; /* blue accent for checkboxes */
+      accent-color: #3b82f6;
       width: 1.15rem;
       height: 1.15rem;
       cursor: pointer;
@@ -164,13 +173,20 @@
       font-weight: 500;
     }
     footer p {
-      color: #9ca3af; /* subtle gray */
+      color: #9ca3af;
     }
     footer a {
       transition: color 0.3s ease;
     }
     footer a:hover {
       color: white;
+    }
+    /* Spinner animation */
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .animate-spin {
+      animation: spin 1s linear infinite;
     }
     /* Responsive tweaks */
     @media (max-width: 640px) {
@@ -304,12 +320,34 @@
           >
         </div>
 
+        <!-- Submit button with spinner -->
         <button
           type="submit"
-          class="btn-primary w-full mt-8"
+          class="btn-primary w-full mt-8 flex justify-center items-center"
           aria-label="Submit Registration"
+          id="submitButton"
         >
-          <i class="fas fa-paper-plane"></i> Submit Registration
+          <i class="fas fa-paper-plane mr-2"></i>
+          <span id="submitButtonText">Submit Registration</span>
+          <svg 
+            id="submitSpinner"
+            class="ml-3 hidden animate-spin h-5 w-5 text-white" 
+            xmlns="http://www.w3.org/2000/svg" 
+            fill="none" 
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <circle 
+              class="opacity-25" 
+              cx="12" cy="12" r="10" 
+              stroke="currentColor" stroke-width="4"
+            ></circle>
+            <path 
+              class="opacity-75" 
+              fill="currentColor" 
+              d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+            ></path>
+          </svg>
         </button>
       </form>
 
@@ -441,8 +479,18 @@
       e.preventDefault();
 
       const form = e.target;
-      let isValid = true;
+      const submitButton = document.getElementById("submitButton");
+      const submitSpinner = document.getElementById("submitSpinner");
+      const submitButtonText = document.getElementById("submitButtonText");
 
+      // Show spinner and disable form inputs + button
+      submitSpinner.classList.remove("hidden");
+      submitButtonText.textContent = "Submitting...";
+      submitButton.disabled = true;
+      Array.from(form.elements).forEach(el => el.disabled = true);
+
+      // Validation
+      let isValid = true;
       form.querySelectorAll("input[required], select[required]").forEach((input) => {
         if (!input.value.trim()) {
           isValid = false;
@@ -460,6 +508,10 @@
 
       if (!isValid) {
         alert("Please fill all required fields correctly.");
+        submitSpinner.classList.add("hidden");
+        submitButtonText.textContent = "Submit Registration";
+        submitButton.disabled = false;
+        Array.from(form.elements).forEach(el => el.disabled = false);
         return;
       }
 
@@ -485,13 +537,16 @@
         });
 
         form.reset();
-        document.querySelectorAll(".slot-btn").forEach((btn) => btn.classList.remove("active"));
-        document.getElementById("successMessage").classList.remove("hidden");
+        submitSpinner.classList.add("hidden");
+        submitButtonText.textContent = "Submit Registration";
+        // Remove active from slot buttons
+        document.querySelectorAll(".slot-btn").forEach(btn => btn.classList.remove("active"));
         form.classList.add("hidden");
+        document.getElementById("successMessage").classList.remove("hidden");
 
         const whatsappLink = `https://wa.me/8149525915?text=Hi%20Admin,%20I%20just%20registered%20for%20Ganesh%20Aarati%20on%20${formData.date}%20(${formData.slot}%20slot).%20My%20details:%20${encodeURIComponent(
-          formData.name
-        )},%20${formData.flatNo}%20${formData.wing}`;
+          formData.name)}%2C%20${formData.flatNo}%20${formData.wing}`;
+        
         document.getElementById("successDetails").innerHTML += `
           <p class="mt-4"><a href="${whatsappLink}" class="text-green-600 underline" target="_blank" rel="noopener noreferrer">Click here to message admin on WhatsApp</a></p>
         `;
@@ -500,6 +555,12 @@
       } catch (error) {
         alert("Error submitting form. Please try again or contact admin at 8149525915.");
         console.error("Submission error:", error);
+
+        // Enable form & hide spinner again
+        submitSpinner.classList.add("hidden");
+        submitButtonText.textContent = "Submit Registration";
+        submitButton.disabled = false;
+        Array.from(form.elements).forEach(el => el.disabled = false);
       }
     });
   </script>
