@@ -1,408 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sai Vista Ganesh Festival Celebration 2025</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-    
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f5f5f5;
-    }
-    
-    .hero-bg {
-      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                  url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9a9e5246-2775-4394-85c3-89fa79691620.png') no-repeat center center;
-      background-size: cover;
-    }
-    
-    .form-container {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    }
-    
-    input, select {
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-    }
-    
-    input:focus, select:focus {
-      border-color: #4f46e5;
-      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
-    }
-    
-    .btn-primary {
-      background-color: #4f46e5;
-      transition: all 0.3s ease;
-    }
-    
-    .btn-primary:hover {
-      background-color: #4338ca;
-      transform: translateY(-2px);
-    }
-    
-    .slot-btn {
-      border: 2px solid #e2e8f0;
-      transition: all 0.3s ease;
-    }
-    
-    .slot-btn.active {
-      border-color: #4f46e5;
-      background-color: #eef2ff;
-    }
-    
-    .chart-container {
-      height: 300px;
-      background-color: #f8fafc;
-      border-radius: 10px;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sai Vista Ganesh Festival Celebration 2025</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    body { font-family: 'Poppins', sans-serif; background: #f5f5f5;}
+    .hero-bg {
+      background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), 
+        url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9a9e5246-2775-4394-85c3-89fa79691620.png') no-repeat center center;
+      background-size: cover;}
+    .form-container {background:rgba(255,255,255,0.95);border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,0.1);}
+    input,select{border:1px solid #e2e8f0;border-radius:8px;transition:all 0.3s;}
+    input:focus,select:focus{border-color:#4f46e5;box-shadow:0 0 0 3px rgba(79,70,229,0.2);}
+    .btn-primary{background-color:#4f46e5;transition:all 0.3s;}
+    .btn-primary:hover{background-color:#4338ca;transform:translateY(-2px);}
+    .slot-btn{border:2px solid #e2e8f0;transition:all 0.3s;}
+    .slot-btn.active{border-color:#4f46e5;background:#eef2ff;}
+    .chart-container{height:300px;background:#f8fafc;border-radius:10px;}
+  </style>
 </head>
 <body class="min-h-screen">
-    <header class="hero-bg text-white py-16 md:py-24">
-    <div class="container mx-auto px-4 text-center">
-      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/575555f8-e882-4618-a576-534c5822eef5.png" alt="Golden Ganesh idol with elaborate decorations and flowers" class="mx-auto rounded-full border-4 border-yellow-400 mb-6">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4">Sai Vista Ganesh Festival</h1>
-      <p class="text-xl md:text-2xl mb-8">Celebration 2025 - Aarati Nomination</p>
-    </div>
-  </header>
+  <!-- Hero Banner -->
+  <header class="hero-bg text-white py-16 md:py-24">
+    <div class="container mx-auto px-4 text-center">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/575555f8-e882-4618-a576-534c5822eef5.png" alt="Ganesh" class="mx-auto rounded-full border-4 border-yellow-400 mb-6" style="width:120px;">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Sai Vista Ganesh Festival</h1>
+      <p class="text-xl md:text-2xl mb-8">Celebration 2025 - Aarati Nomination</p>
+    </div>
+  </header>
+  <!-- Main -->
+  <main class="container mx-auto px-4 py-12 max-w-4xl">
+    <div class="form-container p-6 md:p-10">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">Nomination Form</h2>
+      <form id="nominationForm" class="space-y-6">
+        <!-- Name Field -->
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Complete Name *</label>
+          <input type="text" id="name" required class="w-full px-4 py-3 border focus:outline-none">
+        </div>
+        <!-- Flat & Wing -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="flatNo" class="block text-sm font-medium text-gray-700 mb-1">Flat Number *</label>
+            <select id="flatNo" required class="w-full px-4 py-3 border focus:outline-none">
+              <option value="" disabled selected>Select Flat Number</option>
+              <!-- JavaScript will fill options -->
+            </select>
+          </div>
+          <div>
+            <label for="wing" class="block text-sm font-medium text-gray-700 mb-1">Wing *</label>
+            <select id="wing" required class="w-full px-4 py-3 border focus:outline-none">
+              <option value="" disabled selected>Select Wing</option>
+              <option value="A">A</option><option value="B">B</option>
+              <option value="C">C</option><option value="D">D</option>
+              <option value="E">E</option><option value="F">F</option>
+            </select>
+          </div>
+        </div>
+        <!-- WhatsApp Number -->
+        <div>
+          <label for="whatsapp" class="block text-sm font-medium text-gray-700 mb-1">WhatsApp Number *</label>
+          <input type="tel" id="whatsapp" required class="w-full px-4 py-3 border focus:outline-none" pattern="[0-9]{10}" title="Please enter a valid 10-digit WhatsApp number">
+          <p class="text-xs text-gray-500 mt-1">Enter 10-digit WhatsApp number (without country code)</p>
+        </div>
+        <!-- Date Picker -->
+        <div>
+          <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Select Date *</label>
+          <input type="date" id="date" required class="w-full px-4 py-3 border focus:outline-none" min="2025-08-27" max="2025-09-06">
+        </div>
+        <!-- Time Slot -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Select Slot *</label>
+          <div class="grid grid-cols-2 gap-3">
+            <button type="button" id="morningSlot" class="slot-btn py-3 px-4 rounded-lg" onclick="selectSlot('morning')">
+              <i class="fas fa-sun mr-2 text-yellow-500"></i> Morning (8-10 AM)
+            </button>
+            <button type="button" id="eveningSlot" class="slot-btn py-3 px-4 rounded-lg" onclick="selectSlot('evening')">
+              <i class="fas fa-moon mr-2 text-indigo-500"></i> Evening (6-8 PM)
+            </button>
+          </div>
+          <input type="hidden" id="slot" required>
+        </div>
+        <!-- Chart -->
+        <div id="chartContainer" class="chart-container p-4 mt-6">
+          <div class="flex justify-between items-end h-full pb-4">
+            <div class="text-center w-full">
+              <p class="text-sm text-gray-500">Select a date and slot to see availability</p>
+            </div>
+          </div>
+        </div>
+        <!-- Checkbox -->
+        <div class="flex items-center">
+          <input type="checkbox" id="bringThali" class="w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500">
+          <label for="bringThali" class="ml-2 text-sm text-gray-700">I will bring my own pooja thali and prasad</label>
+        </div>
+        <!-- Submit -->
+        <button type="submit" class="btn-primary text-white py-3 px-6 rounded-lg w-full font-medium">
+          <i class="fas fa-paper-plane mr-2"></i> Submit Registration
+        </button>
+      </form>
+      <!-- Success Message -->
+      <div id="successMessage" class="hidden mt-8 p-6 bg-green-50 border border-green-200 rounded-lg">
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <i class="fas fa-check-circle text-green-500 text-3xl"></i>
+          </div>
+          <div class="ml-3">
+            <h3 class="text-lg font-medium text-green-800">Thank you for your registration!</h3>
+            <div class="mt-2 text-sm text-green-700" id="successDetails">
+              <p>Your nomination for Ganesh Aarati has been successfully registered.</p>
+              <p class="mt-1">You'll be added to our WhatsApp group shortly.</p>
+              <p class="mt-1">For any changes, please message admin on WhatsApp at <strong>8149525915</strong>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Admin Note -->
+      <div class="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+        <p class="text-sm text-blue-700">
+          <i class="fas fa-info-circle mr-2 text-blue-500"></i>
+          Note: Your information will be securely stored in our Google Sheets records for organizational purposes.
+          For any changes to your registration, please contact the admin at 8149525915.
+          Data is encrypted during transmission. This site is hosted on GitHub Pages.
+        </p>
+      </div>
+    </div>
+  </main>
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-4 text-center">
+      <p>Sai Vista Ganesh Festival Celebration 2025</p>
+      <p class="mt-2 text-sm text-gray-400">August 27 - September 6, 2025</p>
+      <div class="mt-4 flex justify-center space-x-4">
+        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-whatsapp text-xl"></i></a>
+        <a href="#" class="text-gray-300 hover:text-white"><i class="fas fa-phone text-xl"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    // --- CONFIG: PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL BELOW ---
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwCT4HL282DvhOP4mA3E89M_7WItl44nmXDAmEmmaMZ3al02Ncm1WCdGsBYFpblF3jp/exec";
+    // ---------------------------------------------------------------
 
-    <main class="container mx-auto px-4 py-12 max-w-4xl">
-    <div class="form-container p-6 md:p-10">
-      <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">Nomination Form</h2>
-      
-            <form id="nominationForm" class="space-y-6">
-                <div>
-          <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Complete Name *</label>
-          <input type="text" id="name" name="name" required class="w-full px-4 py-3 border focus:outline-none">
-        </div>
-        
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label for="flatNo" class="block text-sm font-medium text-gray-700 mb-1">Flat Number *</label>
-            <select id="flatNo" name="flatNo" required class="w-full px-4 py-3 border focus:outline-none">
-              <option value="" disabled selected>Select Flat Number</option>
-              <script>
-                // Generate flat numbers from 101-104 up to 1301-1304
-                for (let floor = 1; floor <= 13; floor++) {
-                  for (let flat = 1; flat <= 4; flat++) {
-                    const flatNo = `${floor}0${flat}`;
-                    document.write(`<option value="${flatNo}">${flatNo}</option>`);
-                  }
-                }
-              </script>
-            </select>
-          </div>
-          <div>
-            <label for="wing" class="block text-sm font-medium text-gray-700 mb-1">Wing *</label>
-            <select id="wing" name="wing" required class="w-full px-4 py-3 border focus:outline-none">
-              <option value="" disabled selected>Select Wing</option>
-              <option value="A">A</option>
-              <option value="B">B</option>
-              <option value="C">C</option>
-              <option value="D">D</option>
-              <option value="E">E</option>
-              <option value="F">F</option>
-            </select>
-          </div>
-        </div>
-        
-                <div>
-          <label for="whatsapp" class="block text-sm font-medium text-gray-700 mb-1">WhatsApp Number *</label>
-          <input type="tel" id="whatsapp" name="whatsapp" required class="w-full px-4 py-3 border focus:outline-none" 
-                 pattern="[0-9]{10}" title="Please enter a valid 10-digit WhatsApp number">
-          <p class="text-xs text-gray-500 mt-1">Enter your 10-digit WhatsApp number without country code</p>
-        </div>
-        
-                <div>
-          <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Select Date *</label>
-          <input type="date" id="date" name="date" required class="w-full px-4 py-3 border focus:outline-none"
-                 min="2025-08-27" max="2025-09-06">
-        </div>
-        
-                <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Select Slot *</label>
-          <div class="grid grid-cols-2 gap-3">
-            <button type="button" id="morningSlot" class="slot-btn py-3 px-4 rounded-lg" onclick="selectSlot('morning')">
-              <i class="fas fa-sun mr-2 text-yellow-500"></i> Morning (8-10 AM)
-            </button>
-            <button type="button" id="eveningSlot" class="slot-btn py-3 px-4 rounded-lg" onclick="selectSlot('evening')">
-              <i class="fas fa-moon mr-2 text-indigo-500"></i> Evening (6-8 PM)
-            </button>
-          </div>
-          <input type="hidden" id="slot" name="slot" required>
-        </div>
-        
-                <div id="chartContainer" class="chart-container p-4 mt-6">
-          <div class="flex justify-between items-end h-full pb-4">
-                        <div class="text-center w-full">
-              <p class="text-sm text-gray-500">Select a date and slot to see availability</p>
-            </div>
-          </div>
-        </div>
-        
-                <div class="flex items-center">
-          <input type="checkbox" id="bringThali" name="bringThali" class="w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500">
-          <label for="bringThali" class="ml-2 text-sm text-gray-700">I will bring my own pooja thali and prasad</label>
-        </div>
-        
-                <button type="submit" class="btn-primary text-white py-3 px-6 rounded-lg w-full font-medium">
-          <i class="fas fa-paper-plane mr-2"></i> Submit Registration
-        </button>
-      </form>
-      
-            <div id="successMessage" class="hidden mt-8 p-6 bg-green-50 border border-green-200 rounded-lg">
-        <div class="flex items-center">
-          <div class="flex-shrink-0">
-            <i class="fas fa-check-circle text-green-500 text-3xl"></i>
-          </div>
-          <div class="ml-3">
-            <h3 class="text-lg font-medium text-green-800">Thank you for your registration!</h3>
-            <div class="mt-2 text-sm text-green-700">
-              <p>Your nomination for Ganesh Aarati has been successfully registered.</p>
-              <p class="mt-1">You'll be added to our WhatsApp group shortly.</p>
-              <p class="mt-1">For any changes, please message admin on WhatsApp at <strong>8149525915</strong>.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-            <div class="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-        <p class="text-sm text-blue-700">
-          <i class="fas fa-info-circle mr-2 text-blue-500"></i> 
-          Note: Your information will be securely stored in our Google Sheets records for organizational purposes. 
-          For any changes to your registration, please contact the admin at 8149525915. 
-          Data is encrypted during transmission. This site is hosted on GitHub Pages.
-        </p>
-      </div>
-    </div>
-  </main>
-
-  <footer class="bg-gray-800 text-white py-8">
-    <div class="container mx-auto px-4 text-center">
-      <p>Sai Vista Ganesh Festival Celebration 2025</p>
-      <p class="mt-2 text-sm text-gray-400">August 27 - September 6, 2025</p>
-      <div class="mt-4 flex justify-center space-x-4">
-        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-whatsapp text-xl"></i></a>
-        <a href="#" class="text-gray-300 hover:text-white"><i class="fas fa-phone text-xl"></i></a>
-      </div>
-    </div>
-  </footer>
-
-    <div class="hidden">
-          </div>
-
-  <script>
-    // **IMPORTANT:** Replace this with your deployed Google Apps Script Web App URL
-    const scriptURL = 'AKfycbzk3n2315NosudNJZDPVc6jOEN7QKEy8UWnRGidXEk'; 
-    const MAX_CAPACITY_DISPLAY = 10; // This should match MAX_CAPACITY_PER_SLOT in your Apps Script for display consistency
-
-    // Select time slot
-    function selectSlot(slotType) {
-        document.getElementById('slot').value = slotType;
-        
-        // Update UI for active slot button
-        document.querySelectorAll('.slot-btn').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        document.getElementById(`${slotType}Slot`).classList.add('active');
-        
-        // Update chart if a date is also selected
-        const selectedDate = document.getElementById('date').value;
-        if (selectedDate) {
-            updateChart(selectedDate, slotType);
-        }
-    }
-
-    // Update registration chart with real-time data from Google Sheet
-    async function updateChart(date, slot) {
-        const chartContainer = document.getElementById('chartContainer');
-        chartContainer.innerHTML = `<div class="text-center w-full"><p class="text-sm text-gray-500">Loading availability...</p></div>`;
-
-        try {
-            // Fetch data from Google Apps Script (doGet function)
-            const response = await fetch(scriptURL); 
-            
-            if (!response.ok) {
-                const errorText = await response.text();
-                throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorText}`);
-            }
-
-            const data = await response.json();
-            
-            // Check for errors returned by the Apps Script itself
-            if (data.error) {
-                chartContainer.innerHTML = `<div class="text-center w-full"><p class="text-sm text-red-500">Server error: ${data.error}</p></div>`;
-                return;
-            }
-
-            const counts = data.counts || {}; // Actual registration counts
-            const maxCapacity = data.maxCapacity || MAX_CAPACITY_DISPLAY; // Get max capacity from script, or use local default
-
-            const slotData = counts[date] || { morning: 0, evening: 0 };
-            const currentCount = slotData[slot] || 0;
-            
-            // Calculate height as percentage, capping at 100%
-            const barHeight = Math.min((currentCount / maxCapacity) * 100, 100);
-
-            chartContainer.innerHTML = `
-                <div class="flex flex-col h-full">
-                    <div class="flex justify-between items-end flex-grow">
-                        <div class="flex flex-col items-center w-full">
-                            <div class="relative w-3/4 h-48">
-                                <div class="absolute bottom-0 w-full bg-gray-200 rounded-t h-full"></div>
-                                <div class="absolute bottom-0 w-full bg-indigo-500 rounded-t" 
-                                    style="height: ${barHeight}%;"></div>
-                            </div>
-                            <div class="mt-2 text-sm font-medium">
-                                Registered: ${currentCount} / ${maxCapacity}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        } catch (error) {
-            console.error('Error fetching chart data:', error);
-            chartContainer.innerHTML = `<div class="text-center w-full"><p class="text-sm text-red-500">Failed to load availability. Please try again.</p></div>`;
-        }
-    }
-
-    // Event listener for date selection change
-    document.getElementById('date').addEventListener('change', function() {
-        const selectedDate = this.value;
-        const selectedSlot = document.getElementById('slot').value;
-        if (selectedDate && selectedSlot) {
-            updateChart(selectedDate, selectedSlot);
-        } else if (selectedDate) {
-             // If only date is selected, clear chart or show message to select slot
-             document.getElementById('chartContainer').innerHTML = `
-                <div class="text-center w-full">
-                    <p class="text-sm text-gray-500">Please select a slot to see availability for this date.</p>
-                </div>
-             `;
-        }
-    });
-
-    // Form submission handler
-    document.getElementById('nominationForm').addEventListener('submit', async function(e) {
-        e.preventDefault(); // Prevent default form submission
-        
-        const form = e.target;
-        // Get all required inputs, including the hidden 'slot' field
-        const requiredInputs = form.querySelectorAll('input[required], select[required], #slot');
-        let isValid = true;
-        
-        // Basic client-side validation for empty fields and WhatsApp format
-        requiredInputs.forEach(input => {
-            if (!input.value) {
-                isValid = false;
-                input.classList.add('border-red-500'); // Add error styling
-            } else {
-                input.classList.remove('border-red-500'); // Remove error styling
-            }
-        });
-        
-        const whatsappInput = document.getElementById('whatsapp');
-        if (!/^\d{10}$/.test(whatsappInput.value)) {
-            isValid = false;
-            whatsappInput.classList.add('border-red-500');
-            alert('Please enter a valid 10-digit WhatsApp number.');
-            return; // Stop if WhatsApp is invalid
-        } else {
-            whatsappInput.classList.remove('border-red-500');
-        }
-
-        if (!isValid) {
-            alert('Please fill all required fields correctly.');
-            return; // Stop if any required field is empty
-        }
-
-        const submitButton = form.querySelector('button[type="submit"]');
-        submitButton.disabled = true; // Disable button to prevent multiple submissions
-        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Submitting...'; // Show loading state
-
-        const formData = new FormData(form); // Collect form data
-        // Explicitly add checkbox value if needed, FormData usually handles this
-        formData.set('bringThali', document.getElementById('bringThali').checked);
-
-        try {
-            const response = await fetch(scriptURL, {
-                method: 'POST',
-                body: formData // FormData correctly sets Content-Type
-            });
-
-            if (!response.ok) {
-                const errorText = await response.text();
-                throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorText}`);
-            }
-
-            const result = await response.json(); // Parse the JSON response from Apps Script
-
-            if (result.success) {
-                form.reset(); // Clear the form
-                // Deactivate slot buttons
-                document.querySelectorAll('.slot-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                document.getElementById('successMessage').classList.remove('hidden'); // Show success message
-                form.classList.add('hidden'); // Hide the form
-
-                // Construct WhatsApp admin message with submitted details
-                const whatsappLink = `https://wa.me/8149525915?text=Hi%20Admin,%20I%20just%20registered%20for%20Ganesh%20Aarati%20on%20${formData.get('date')}%20(${formData.get('slot')}%20slot).%20My%20details:%20Name:%20${encodeURIComponent(formData.get('name'))},%20Flat:%20${formData.get('flatNo')}%20${formData.get('wing')}.%20WhatsApp:%20${formData.get('whatsapp')}`;
-                
-                document.querySelector('#successMessage .text-green-700').innerHTML = `
-                    <p>Your nomination for Ganesh Aarati has been successfully registered.</p>
-                    <p class="mt-1">You'll be added to our WhatsApp group shortly.</p>
-                    <p class="mt-1">For any changes, please message admin on WhatsApp at <strong>8149525915</strong>.</p>
-                    <p class="mt-4"><a href="${whatsappLink}" target="_blank" class="text-green-600 underline">Click here to message admin on WhatsApp</a></p>
-                `;
-                
-                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
-
-                // Re-fetch chart data to show updated counts for the selected date/slot
-                const selectedDate = document.getElementById('date').value;
-                const selectedSlot = document.getElementById('slot').value;
-                if (selectedDate && selectedSlot) {
-                    updateChart(selectedDate, selectedSlot);
-                }
-
-            } else {
-                alert(`Registration failed: ${result.message}`);
-            }
-        } catch (error) {
-            alert('Error submitting form. Please try again or contact admin at 8149525915. Details: ' + error.message);
-            console.error('Submission Error:', error);
-        } finally {
-            submitButton.disabled = false; // Re-enable button
-            submitButton.innerHTML = '<i class="fas fa-paper-plane mr-2"></i> Submit Registration'; // Reset button text
-        }
-    });
-
-    // Initialize the form elements on page load
+    // Fill flat numbers 101-104 to 1301-1304
     document.addEventListener('DOMContentLoaded', function() {
-        const dateInput = document.getElementById('date');
-        // Set the minimum and maximum dates for the date input
-        dateInput.min = '2025-08-27';
-        dateInput.max = '2025-09-06';
-        
-        // Ensure WhatsApp input only accepts digits and limits to 10 characters
-        document.getElementById('whatsapp').addEventListener('input', function() {
-            this.value = this.value.replace(/\D/g, '').substring(0, 10);
-        });
-        
-        // Initial chart display if date/slot are pre-filled (e.g., from browser history)
-        const initialDate = dateInput.value;
-        const initialSlot = document.getElementById('slot').value;
-        if (initialDate && initialSlot) {
-            updateChart(initialDate, initialSlot);
+      const flatSelect = document.getElementById('flatNo');
+      for (let floor = 1; floor <= 13; floor++) {
+        for (let flat = 1; flat <= 4; flat++) {
+          const flatNo = `${floor}${flat < 10 ? '0' + flat : flat}`;
+          let option = document.createElement('option');
+          option.value = flatNo;
+          option.textContent = flatNo;
+          flatSelect.appendChild(option);
         }
+      }
+      // WhatsApp input validation
+      document.getElementById('whatsapp').addEventListener('input', function(e) {
+        this.value = this.value.replace(/\D/g, '').slice(0, 10);
+      });
     });
-</script>
+
+    // SLOT selection logic
+    window.selectSlot = function(slotType) {
+      document.getElementById('slot').value = slotType;
+      document.querySelectorAll('.slot-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById(`${slotType}Slot`).classList.add('active');
+      // Update chart if date is picked
+      const selectedDate = document.getElementById('date').value;
+      if (selectedDate) updateChart(selectedDate, slotType);
+    }
+
+    // Fetch live registration data and update chart
+    async function fetchSlotData() {
+      const res = await fetch(GOOGLE_SCRIPT_URL);
+      return await res.json();
+    }
+
+    async function updateChart(date, slot) {
+      const chartContainer = document.getElementById('chartContainer');
+      const registrations = await fetchSlotData();
+      const data = registrations[date] || { morning: 0, evening: 0 };
+      const count = data[slot] || 0;
+      const maxCapacity = 10;
+
+      chartContainer.innerHTML = `
+        <div class="flex flex-col h-full">
+          <div class="flex justify-between items-end flex-grow">
+            <div class="flex flex-col items-center w-full">
+              <div class="relative w-3/4 h-48">
+                <div class="absolute bottom-0 w-full bg-gray-200 rounded-t h-full"></div>
+                <div class="absolute bottom-0 w-full bg-indigo-500 rounded-t"
+                  style="height: ${(count / maxCapacity) * 100}%"></div>
+              </div>
+              <div class="mt-2 text-sm font-medium">Registered: ${count} / ${maxCapacity}</div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // On Date change, update chart if slot selected
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('date').addEventListener('change', function() {
+        const date = this.value;
+        const slot = document.getElementById('slot').value;
+        if (date && slot) updateChart(date, slot);
+      });
+    });
+
+    // Form submission/saving
+    document.getElementById('nominationForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      // Validate required
+      const form = e.target;
+      const required = form.querySelectorAll('input[required], select[required]');
+      let isValid = true;
+      required.forEach(input => {
+        if (!input.value) {
+          isValid = false;
+          input.classList.add('border-red-500');
+        } else {
+          input.classList.remove('border-red-500');
+        }
+      });
+      // WhatsApp validation
+      const whatsapp = document.getElementById('whatsapp').value;
+      if (!/^\d{10}$/.test(whatsapp)) {
+        isValid = false;
+        document.getElementById('whatsapp').classList.add('border-red-500');
+      }
+      if (!isValid) {
+        alert('Please fill all required fields correctly.');
+        return;
+      }
+      // Prepare form data
+      const formData = {
+        name: document.getElementById('name').value,
+        flatNo: document.getElementById('flatNo').value,
+        wing: document.getElementById('wing').value,
+        whatsapp: whatsapp,
+        date: document.getElementById('date').value,
+        slot: document.getElementById('slot').value,
+        bringThali: document.getElementById('bringThali').checked,
+        timestamp: new Date().toISOString()
+      };
+
+      // Save to Google Sheet
+      try {
+        const res = await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+        // Show success
+        form.reset();
+        document.querySelectorAll('.slot-btn').forEach(btn => btn.classList.remove('active'));
+        document.getElementById('successMessage').classList.remove('hidden');
+        form.classList.add('hidden');
+        // WhatsApp Link
+        const whatsappLink = `https://wa.me/8149525915?text=Hi%20Admin,%20I%20just%20registered%20for%20Ganesh%20Aarati%20on%20${formData.date}%20(${formData.slot}%20slot).%20My%20details:%20${formData.name},%20${formData.flatNo}%20${formData.wing}`;
+        document.getElementById('successDetails').innerHTML +=
+          `<p class="mt-4"><a href="${whatsappLink}" class="text-green-600 underline">Click here to message admin on WhatsApp</a></p>`;
+        document.getElementById('successMessage').scrollIntoView({behavior: 'smooth'});
+      } catch (error) {
+        alert('Error submitting form. Please try again or contact admin at 8149525915.');
+        console.error('Error:', error);
+      }
+    });
+  </script>
 </body>
 </html>
