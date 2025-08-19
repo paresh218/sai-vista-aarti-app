@@ -433,7 +433,7 @@
     
         async function fetchSlotData() {
             // Add ?action=slots to request slot data, not registration
-            const resp = await fetch(GOOGLE_SCRIPT_URL + "?action=Slot");
+            const resp = await fetch(GOOGLE_SCRIPT_URL + "?action=slots");
             return await resp.json();
         }
 
