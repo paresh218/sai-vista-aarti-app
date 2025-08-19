@@ -382,7 +382,17 @@
             </div>
         </div>
     </main>
-
+<!-- Slot Selection Info Modal -->
+<div id="slotInfoModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 hidden">
+  <div class="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full text-center">
+    <h3 class="text-lg font-semibold mb-2 text-blue-700">Select Slot to View Registrations</h3>
+    <p class="text-gray-700 mb-4">
+      Once you select a date, please select a slot (Morning/Evening) to see how many people have registered for that Aarati slot.
+    </p>
+    <button id="closeSlotInfoModal" class="btn-primary px-6 py-2">OK</button>
+  </div>
+</div>
+    
     <footer class="bg-gray-800 text-white py-8 rounded-t-xl mt-12 shadow-inner">
         <div class="container mx-auto px-4 text-center space-y-2">
             <p class="text-sm font-medium tracking-wide">Sai Vista Ganesh Festival Celebration 2025</p>
@@ -560,6 +570,30 @@
         Array.from(form.elements).forEach(el => el.disabled = false);
       }
     });
+        document.addEventListener("DOMContentLoaded", () => {
+  const dateInput = document.getElementById("date");
+  const slotInput = document.getElementById("slot");
+  const slotInfoModal = document.getElementById("slotInfoModal");
+  const closeSlotInfoModal = document.getElementById("closeSlotInfoModal");
+
+  dateInput.addEventListener("change", () => {
+    // Only show modal if slot is not selected
+    if (!slotInput.value) {
+      slotInfoModal.classList.remove("hidden");
+    }
+  });
+
+  closeSlotInfoModal.addEventListener("click", () => {
+    slotInfoModal.classList.add("hidden");
+  });
+
+  // Optional: Hide modal if user clicks outside the modal box
+  slotInfoModal.addEventListener("click", (e) => {
+    if (e.target === slotInfoModal) {
+      slotInfoModal.classList.add("hidden");
+    }
+  });
+});
     </script>
 </body>
 </html>
